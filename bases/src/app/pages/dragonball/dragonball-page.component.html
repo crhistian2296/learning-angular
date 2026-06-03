@@ -32,8 +32,8 @@
     />
     <input
       type="text"
-      name="technique"
-      id="technique"
+      name="power"
+      id="power"
       placeholder="Técnica del personaje"
       class="form-control mt-2"
     />
@@ -44,12 +44,20 @@
   <div class="col-12 col-sm-6">
     <h3>Listado</h3>
     <ol>
-      <li>Goku</li>
-      <li>Goku</li>
-      <li>Goku</li>
-      <li>Goku</li>
-      <li>Goku</li>
-      <li>Goku</li>
+      @for (character of characters(); track character.id) {
+        @if (character.power > 500) {
+          <li>
+            <span>{{ character.name }}</span>
+            -
+            <span
+              >nivel de poder:
+              <strong [ngClass]="poewrClasses(character.power)">{{ character.power }}</strong></span
+            >
+          </li>
+        } @else {
+          <li>Nah, no vale la pena... Se llama {{ character.name }} ...</li>
+        }
+      }
     </ol>
   </div>
 </section>
