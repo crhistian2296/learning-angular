@@ -1,0 +1,68 @@
+<style>
+  nav {
+    display: flex;
+    justify-content: flex-start;
+    background-color: #212121;
+    color: white;
+    padding: 1rem;
+
+    a {
+      color: white;
+      text-decoration: none;
+      margin: 0 1rem;
+      &.active {
+        color: paleturquoise;
+        font-weight: bold;
+        text-decoration: underline;
+      }
+    }
+  }
+</style>
+<h2>Dragon Ball Super</h2>
+<hr />
+<section class="row">
+  <div class="col-12 col-sm-6">
+    <h3>Agregar: {{ newCharacter().name }}</h3>
+    <input
+      type="text"
+      name="name"
+      id="name"
+      placeholder="Nombre del personaje"
+      class="form-control"
+      [value]="newCharacter().name"
+      (input)="updateName($event)"
+    />
+    <h3>Power: {{ newCharacter().power }}</h3>
+    <input
+      type="number"
+      name="power"
+      id="power"
+      placeholder="Técnica del personaje"
+      class="form-control mt-2"
+      [value]="newCharacter().power"
+      (input)="updatePower($event)"
+    />
+
+    <button class="mt-2 btn btn-primary" (click)="addCharacter()">Agregar</button>
+  </div>
+
+  <div class="col-12 col-sm-6">
+    <h3>Listado</h3>
+    <ol>
+      @for (character of characters(); track character.id) {
+        @if (powerLevelNumber(character) > 500) {
+          <li>
+            <span>{{ character.name }}</span>
+            -
+            <span
+              >nivel de poder:
+              <strong [ngClass]="powerClasses(character.power)">{{ character.power }}</strong></span
+            >
+          </li>
+        } @else {
+          <li>Nah, no vale la pena... Se llama {{ character.name }} ...</li>
+        }
+      }
+    </ol>
+  </div>
+</section>

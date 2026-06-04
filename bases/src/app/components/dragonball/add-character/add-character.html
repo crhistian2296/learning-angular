@@ -1,0 +1,24 @@
+<div class="col-12 col-sm-6">
+  <h3>Agregar: {{ newCharacter().name }}</h3>
+  <input
+    type="text"
+    name="name"
+    id="name"
+    placeholder="Nombre del personaje"
+    class="form-control"
+    [value]="newCharacter().name"
+    (input)="updateName($event)"
+  />
+  <h3>Power: {{ newCharacter().power }}</h3>
+  <input
+    type="number"
+    name="power"
+    id="power"
+    placeholder="Técnica del personaje"
+    class="form-control mt-2"
+    [value]="newCharacter().power"
+    (input)="updatePower($event)"
+  />
+
+  <button class="mt-2 btn btn-primary" (click)="addCharacter()">Agregar</button>
+</div>

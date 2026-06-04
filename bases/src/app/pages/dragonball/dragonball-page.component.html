@@ -21,43 +21,10 @@
 <h2>Dragonball</h2>
 <hr />
 <section class="row">
-  <div class="col-12 col-sm-6">
-    <h3>Agregar:</h3>
-    <input
-      type="text"
-      name="name"
-      id="name"
-      placeholder="Nombre del personaje"
-      class="form-control"
-    />
-    <input
-      type="text"
-      name="power"
-      id="power"
-      placeholder="Técnica del personaje"
-      class="form-control mt-2"
-    />
-
-    <button class="mt-2 btn btn-primary">Agregar</button>
-  </div>
-
-  <div class="col-12 col-sm-6">
-    <h3>Listado</h3>
-    <ol>
-      @for (character of characters(); track character.id) {
-        @if (character.power > 500) {
-          <li>
-            <span>{{ character.name }}</span>
-            -
-            <span
-              >nivel de poder:
-              <strong [ngClass]="poewrClasses(character.power)">{{ character.power }}</strong></span
-            >
-          </li>
-        } @else {
-          <li>Nah, no vale la pena... Se llama {{ character.name }} ...</li>
-        }
-      }
-    </ol>
-  </div>
+  <dragonball-add-character [characters]="characters()"></dragonball-add-character>
+  <dragonball-character-list
+    listName="Listado de personajes"
+    [characters]="characters()"
+    class="col-12 col-sm-6"
+  ></dragonball-character-list>
 </section>
