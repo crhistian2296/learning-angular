@@ -21,10 +21,13 @@
 <h2>Dragonball</h2>
 <hr />
 <section class="row">
-  <dragonball-add-character [characters]="characters()"></dragonball-add-character>
+  <dragonball-add-character
+    [characters]="dragonballService.characters()"
+    (charactersChange)="dragonballService.characters.update(() => $event)"
+  ></dragonball-add-character>
   <dragonball-character-list
     listName="Listado de personajes"
-    [characters]="characters()"
+    [characters]="dragonballService.characters()"
     class="col-12 col-sm-6"
   ></dragonball-character-list>
 </section>

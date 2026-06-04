@@ -1,10 +1,9 @@
-import { ChangeDetectionStrategy, Component, model, signal } from '@angular/core';
+import { Component, model, signal } from '@angular/core';
 
 @Component({
   selector: 'dragonball-add-character',
   imports: [],
-  templateUrl: './add-character.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  templateUrl: './add-character.component.html',
 })
 export class AddCharacter {
   characters = model.required<Character[]>();
