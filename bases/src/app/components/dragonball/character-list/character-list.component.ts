@@ -1,11 +1,10 @@
 import { NgClass } from '@angular/common';
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 @Component({
   selector: 'dragonball-character-list',
   imports: [NgClass],
-  templateUrl: './character-list.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  templateUrl: './character-list.component.html',
 })
 export class CharacterList {
   characters = input.required<Character[]>();
