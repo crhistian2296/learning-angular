@@ -22,8 +22,7 @@
 <hr />
 <section class="row">
   <dragonball-add-character
-    [characters]="dragonballService.characters()"
-    (charactersChange)="dragonballService.characters.update(() => $event)"
+    (addCharacterEvent)="dragonballService.addCharacter($event)"
   ></dragonball-add-character>
   <dragonball-character-list
     listName="Listado de personajes"

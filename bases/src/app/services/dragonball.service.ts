@@ -12,11 +12,7 @@ export class DragonballService {
     { id: '7', name: 'Chaos', power: '300' },
   ]);
 
-  newCharacter = signal<Character>({ id: '', name: '', power: '0' });
-
-  addCharacter() {
-    const character = { ...this.newCharacter(), id: Date.now().toString() };
+  addCharacter(character: Character) {
     this.characters.update((prev) => [...prev, character]);
-    this.newCharacter.set({ id: '', name: '', power: '0' });
   }
 }

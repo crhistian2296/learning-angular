@@ -1,4 +1,4 @@
-import { Component, model, signal } from '@angular/core';
+import { Component, output, signal } from '@angular/core';
 
 @Component({
   selector: 'dragonball-add-character',
@@ -6,8 +6,8 @@ import { Component, model, signal } from '@angular/core';
   templateUrl: './add-character.component.html',
 })
 export class AddCharacter {
-  characters = model.required<Character[]>();
   newCharacter = signal<Character>({ id: '', name: '', power: '0' });
+  addCharacterEvent = output<Character>();
 
   updateName(event: Event) {
     const name = (event.target as HTMLInputElement).value;
@@ -21,7 +21,7 @@ export class AddCharacter {
 
   addCharacter() {
     const character = { ...this.newCharacter(), id: Date.now().toString() };
-    this.characters.update((prev) => [...prev, character]);
+    this.addCharacterEvent.emit(character);
     this.newCharacter.set({ id: '', name: '', power: '0' });
   }
 }
